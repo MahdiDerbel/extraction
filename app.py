@@ -16,10 +16,10 @@ def validate(date_text):
     return(h)
 
 
-client_id="vrfd2hz9xtPxrtzpFdg3VKc01AxYrCJeSRlR78O"
-client_secret="ycpIZHAXrxJyHXcW2erYkrCRFCjjOdkWVZ2wjTY4teljza11lOyLNehnJAtshtPGtL6HH9IwWRvny3hWTy68CxCFlWH7AlpOhDoHb2fucKNx1TL8G9IAn3mU7XI0elgC"
-username="khalil"
-api_key="54f07b441d51265e92495ed5f83221e9"
+client_id="vrfXGHzjm5V3jEU7iaB7OFuJFz82359PwP49WrZ"
+client_secret="LiDvV29zMJm93gw0PYrupmvLFSELiNTj8VkgSuPUxorbuEDe25Vx68UStCZwdf8YtNVzn2niEhHklvmlkLkXRL9ZGM6ujyhlorn1IDnXyXtx0DkdFwuL5ZIt74CBJxfn"
+username="omarsfaxiano32"
+api_key="40967967722f30b7daba2fb0684730f8"
 client=veryfi.Client(client_id,client_secret,username,api_key)
 
 json_result=client.process_document("cheque.pdf")
