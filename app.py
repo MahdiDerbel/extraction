@@ -42,7 +42,11 @@ while index<len(lines)-2:
             client=item_of_item[i]
         if validate(item_of_item[i])==True:
             date=item_of_item[i]
-    if date!=''and client!='':
+        if str(json_result['line_items'][0]['total']).replace('.',',') in item_of_item[i]:
+            print(item_of_item)
+            index1=item_of_item.index(str(json_result['line_items'][0]['total']).replace('.',','))
+            RIB=item_of_item[index1-3]+item_of_item[index1-2]+item_of_item[index1-1]
+    if date!=''and client!='' and RIB!='':
         break
     else :
         index=index+1
@@ -51,13 +55,16 @@ while index<len(lines)-2:
         date=''
 
 RIB_CLIENT=json_result['document_reference_number']
-Date_recoit=json_result['date']
+Date_recoit=json_result['date'].split(' ',1)[0]
 RIB_FOURNISSEUR=json_result['line_items'][0]['sku']
+print(json_result['line_items'][0]['sku'])
 Montant=json_result['line_items'][0]['total']
+date=date.replace('/','-')
 
 
 
-df = pd.DataFrame ({'Ordre Paiement':[RIB_CLIENT],'client': [client],'Date opération': [Date_recoit],'Date echéance':[date],'Montant':[Montant]})
+df = pd.DataFrame ({'client': [client],'Ordre Paiement':[RIB_CLIENT],'RIB': [RIB],'Date opération': [Date_recoit],'Date echéance':[date],'Montant':[Montant]})
+
 
 filename='{}.xlsx'.format(uuid.uuid1())
 df.to_excel(filename)
